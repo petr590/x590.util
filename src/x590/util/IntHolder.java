@@ -62,13 +62,13 @@ public class IntHolder {
 	
 	public int postInc(int value) {
 		int prevValue = this.value;
-		this.value += value;
+		this.value = prevValue + value;
 		return prevValue;
 	}
 	
 	public int postDec(int value) {
 		int prevValue = this.value;
-		this.value -= value;
+		this.value = prevValue - value;
 		return prevValue;
 	}
 	
