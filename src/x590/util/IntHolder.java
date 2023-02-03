@@ -87,4 +87,49 @@ public class IntHolder {
 	public int not() {
 		return value = ~value;
 	}
+	
+	
+	public boolean equals(int value) {
+		return this.value == value;
+	}
+	
+	public boolean notEquals(int value) {
+		return this.value != value;
+	}
+	
+	public boolean greater(int value) {
+		return this.value > value;
+	}
+	
+	public boolean greaterOrEquals(int value) {
+		return this.value >= value;
+	}
+	
+	public boolean less(int value) {
+		return this.value < value;
+	}
+	
+	public boolean lessOrEquals(int value) {
+		return this.value <= value;
+	}
+	
+	
+	@Override
+	public boolean equals(Object other) {
+		return this == other || other instanceof IntHolder holder && this.equals(holder);
+	}
+	
+	public boolean equals(IntHolder other) {
+		return value == other.value;
+	}
+	
+	@Override
+	public int hashCode() {
+		return Integer.hashCode(value);
+	}
+	
+	@Override
+	public String toString() {
+		return "IntHolder { value = " + value + " }";
+	}
 }

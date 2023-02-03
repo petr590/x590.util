@@ -1,2 +1,5 @@
-Добавлена папка src в коммит (так удобнее собирать проект).
-Добавлены README.md и README-ru.md
+Добавлены классы LongHolder, DoubleHolder
+
+Некоторые методы перенесены из класса Util в классы IntegerUtil и LongUtil
+
+Добавлен jar файл в коммит

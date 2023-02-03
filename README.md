@@ -1,4 +1,4 @@
-# x590.util library version 1.2.1
+# x590.util library version 1.2.2
 This is a small library that is used in many of my projects.
 
 ### Packages:

@@ -1,6 +1,6 @@
 package x590.util;
 
-public class MathUtil {
+public final class MathUtil {
 	
 	private MathUtil() {}
 	
@@ -42,5 +42,14 @@ public class MathUtil {
 	
 	public static boolean isEven(double x) {
 		return x % 2 == 0;
+	}
+	
+	
+	public static boolean isPowerOfTwo(int num) {
+		return (num & (num - 1)) == 0;
+	}
+	
+	public static boolean isPowerOfTwo(long num) {
+		return (num & (num - 1)) == 0;
 	}
 }

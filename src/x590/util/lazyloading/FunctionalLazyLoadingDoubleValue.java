@@ -24,4 +24,11 @@ public class FunctionalLazyLoadingDoubleValue<T> extends AbstractLazyLoadingValu
 	public double apply(T t) {
 		return get(t);
 	}
+	
+	public double getRequired() {
+		if(function == null)
+			return value;
+		
+		throw new IllegalStateException("Value is not initialized");
+	}
 }

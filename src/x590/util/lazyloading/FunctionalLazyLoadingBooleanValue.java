@@ -24,4 +24,11 @@ public class FunctionalLazyLoadingBooleanValue<T> extends AbstractLazyLoadingVal
 	public boolean apply(T t) {
 		return get(t);
 	}
+	
+	public boolean getRequired() {
+		if(function == null)
+			return value;
+		
+		throw new IllegalStateException("Value is not initialized");
+	}
 }

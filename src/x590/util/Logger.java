@@ -8,7 +8,7 @@ public class Logger {
 	
 	
 	private static void printDebug() {
-		System.out.print("debug: ");
+		System.out.print("[DEBUG]: ");
 	}
 	
 	

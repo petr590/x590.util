@@ -1,2 +1,5 @@
-The src folder has been added to the commit (it is more convenient to build the project this way).
-Added README.md and README-ru.md
+Added LongHolder, DoubleHolder classes
+
+Some methods have been moved from the Util class to the IntegerUtil and LongUtil classes
+
+Added jar file to commit

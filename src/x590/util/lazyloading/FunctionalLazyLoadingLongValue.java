@@ -24,4 +24,11 @@ public class FunctionalLazyLoadingLongValue<T> extends AbstractLazyLoadingValue<
 	public long apply(T t) {
 		return get(t);
 	}
+	
+	public long getRequired() {
+		if(function == null)
+			return value;
+		
+		throw new IllegalStateException("Value is not initialized");
+	}
 }

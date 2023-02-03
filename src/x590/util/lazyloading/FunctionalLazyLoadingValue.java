@@ -26,15 +26,15 @@ public class FunctionalLazyLoadingValue<T, R> extends AbstractLazyLoadingValue<F
 		return get(t);
 	}
 	
-	public boolean isNull(T t) {
+	public boolean isNullValue(T t) {
 		return get(t) == null;
 	}
 	
-	public boolean isNonNull(T t) {
+	public boolean isNonNullValue(T t) {
 		return get(t) != null;
 	}
 	
-	public R get() {
+	public R getRequired() {
 		if(function == null)
 			return value;
 		
