@@ -8,6 +8,8 @@ public class LongHolder {
 	
 	private long value;
 	
+	public LongHolder() {}
+	
 	public LongHolder(long value) {
 		this.value = value;
 	}

@@ -1,5 +1,2 @@
-Added LongHolder, DoubleHolder classes
-
-Some methods have been moved from the Util class to the IntegerUtil and LongUtil classes
-
-Added jar file to commit
+Added the BooleanHolder class
+Added constructors without arguments to the IntHolder, LongHolder, Double Holder, BooleanHolder classes

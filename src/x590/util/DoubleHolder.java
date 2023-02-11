@@ -8,6 +8,8 @@ public class DoubleHolder {
 	
 	private double value;
 	
+	public DoubleHolder() {}
+	
 	public DoubleHolder(double value) {
 		this.value = value;
 	}

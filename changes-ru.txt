@@ -1,5 +1,2 @@
-Добавлены классы LongHolder, DoubleHolder
-
-Некоторые методы перенесены из класса Util в классы IntegerUtil и LongUtil
-
-Добавлен jar файл в коммит
+Добавлен класс BooleanHolder
+Добавлены конструкторы без аргументов в классы IntHolder, LongHolder, DoubleHolder, BooleanHolder
