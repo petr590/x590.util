@@ -16,9 +16,18 @@ public final class IntegerUtil {
 	}
 	
 	
-	/** Делает то же, что и метод {@link Integer#toHexString()}. Нужен для однородности кода. */
+	/** Приводит число к hex строке в верхнем регистре. */
 	public static String hex(int num) {
-		return Integer.toHexString(num);
+		char[] data = new char[8];
+		
+		int i = 8;
+		
+		do {
+			data[--i] = hexChar(num);
+			num >>>= 4;
+		} while(num != 0);
+		
+		return String.valueOf(data, i, 8 - i);
 	}
 	
 	/** Приводит число к hex строке длиной 1 символ. Если число не вмещается в этот дапазон, обрезает его. */
@@ -40,13 +49,14 @@ public final class IntegerUtil {
 	public static String hex8(int num) {
 		return String.valueOf(new char[] {
 				hexChar(num >>> 28), hexChar(num >>> 24), hexChar(num >>> 20), hexChar(num >>> 16),
-				hexChar(num >>> 12), hexChar(num >>> 8), hexChar(num >>> 4), hexChar(num) });
+				hexChar(num >>> 12), hexChar(num >>> 8), hexChar(num >>> 4), hexChar(num)
+		});
 	}
 	
 	
 	/** Делает то же самое, что и {@link #hex(int)}, но прибавляет "0x" */
 	public static String hexWithPrefix(int num) {
-		return "0x" + Integer.toHexString(num);
+		return "0x" + hex(num);
 	}
 	
 	/** Делает то же самое, что и {@link #hex1(int)}, но прибавляет "0x" */

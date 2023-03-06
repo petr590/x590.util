@@ -1,2 +1,2 @@
-Добавлен класс BooleanHolder
-Добавлены конструкторы без аргументов в классы IntHolder, LongHolder, DoubleHolder, BooleanHolder
+Добавлены классы ObjectHolder, LazyLoadingMap
+Изменён код в классах IntegerUtil, LongUtil

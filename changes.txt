@@ -1,2 +1,2 @@
-Added the BooleanHolder class
-Added constructors without arguments to the IntHolder, LongHolder, Double Holder, BooleanHolder classes
+Added the ObjectHolder, LazyLoadingMap classes
+Changed code in the IntegerUtil, LongUtil classes

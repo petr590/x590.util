@@ -12,7 +12,7 @@ import java.lang.annotation.Target;
  * и параметры метода не {@literal null} по умолчанию.
  */
 @Target({ElementType.TYPE, ElementType.PACKAGE})
-@Retention(RetentionPolicy.SOURCE)
+@Retention(RetentionPolicy.CLASS)
 @Documented
 @Inherited
 public @interface NonnullByDefault {}
