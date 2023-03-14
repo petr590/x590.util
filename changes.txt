@@ -1,2 +1,4 @@
-Added the ObjectHolder, LazyLoadingMap classes
-Changed code in the IntegerUtil, LongUtil classes
+Added UncheckedInputStream and CheckedOutputStream classes to the package x590.util.io
+
+The methods forEachExcludingLast, iteratorsEquals, collectionsEquals have been moved to the x590.util.LoopUtil class.
+New forEach and forEachPair methods have also been added there
