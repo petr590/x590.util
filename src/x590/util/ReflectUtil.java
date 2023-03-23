@@ -3,6 +3,7 @@ package x590.util;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 
+@Deprecated
 public class ReflectUtil {
 	
 	private ReflectUtil() {}

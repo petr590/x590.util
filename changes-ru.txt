@@ -1,4 +1,1 @@
-Добавлены классы UncheckedInputStream и UncheckedOutputStream в пакет x590.util.io
-
-Методы forEachExcludingLast, iteratorsEquals, collectionsEquals перенесены в класс x590.util.LoopUtil.
-Туда же добавлены новые методы forEach и forEachPair
+Удалены устаревшие классы (зачем нам этот велосипед?)

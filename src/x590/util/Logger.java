@@ -6,66 +6,83 @@ public class Logger {
 	
 	private Logger() {}
 	
+	private static PrintStream
+			out = System.out,
+			err = System.err;
+	
+	public static void setOutputAndErrorStream(PrintStream out, PrintStream err) {
+		Logger.out = out;
+		Logger.err = err;
+	}
+	
+	public static PrintStream getOutputStream() {
+		return out;
+	}
+	
+	public static PrintStream getErrorStream() {
+		return err;
+	}
+	
 	
 	private static void printDebug() {
-		System.out.print("[DEBUG]: ");
+		out.print("[DEBUG]: ");
 	}
 	
 	
 	public static void debug(boolean x) {
 		printDebug();
-		System.out.println(x);
+		out.println(x);
 	}
 	
 	public static void debug(char x) {
 		printDebug();
-		System.out.println(x);
+		out.println(x);
 	}
 	
 	public static void debug(int x) {
 		printDebug();
-		System.out.println(x);
+		out.println(x);
 	}
 	
 	public static void debug(long x) {
 		printDebug();
-		System.out.println(x);
+		out.println(x);
 	}
 	
 	public static void debug(float x) {
 		printDebug();
-		System.out.println(x);
+		out.println(x);
 	}
 	
 	public static void debug(double x) {
 		printDebug();
-		System.out.println(x);
+		out.println(x);
 	}
 	
 	public static void debug(String str) {
 		printDebug();
-		System.out.println(str);
+		out.println(str);
 	}
 	
 	public static void debug(Object obj1) {
 		printDebug();
-		print(System.out, obj1);
+		print(out, obj1);
 	}
 	
 	public static void debug(Object obj1, Object obj2) {
 		printDebug();
-		print(System.out, obj1, obj2);
+		print(out, obj1, obj2);
 	}
 	
 	public static void debug(Object... args) {
 		printDebug();
-		print(System.out, args);
+		print(out, args);
 	}
 	
 	public static void debugf(String format, Object... params) {
 		printDebug();
-		System.out.printf(format, params);
-		System.out.println();
+		out.printf(format, params);
+		out.println();
 	}
 	
 	
@@ -94,46 +111,46 @@ public class Logger {
 	
 	
 	public static void log(Object obj1) {
-		print(System.out, obj1);
+		print(out, obj1);
 	}
 	
 	public static void log(Object obj1, Object obj2) {
-		print(System.out, obj1, obj2);
+		print(out, obj1, obj2);
 	}
 	
 	public static void log(Object... args) {
-		print(System.out, args);
+		print(out, args);
 	}
 	
 	public static void log(String str) {
-		System.out.println(str);
+		out.println(str);
 	}
 	
 	public static void logf(String format, Object... params) {
-		System.out.printf(format, params);
-		System.out.println();
+		out.printf(format, params);
+		out.println();
 	}
 
 	
 	
 	public static void warning(Object obj1) {
-		print(System.err, obj1);
+		print(err, obj1);
 	}
 	
 	public static void warning(Object obj1, Object obj2) {
-		print(System.err, obj1, obj2);
+		print(err, obj1, obj2);
 	}
 	
 	public static void warning(Object... args) {
-		print(System.err, args);
+		print(err, args);
 	}
 	
 	public static void warning(String str) {
-		System.err.println(str);
+		err.println(str);
 	}
 	
 	public static void warningFormatted(String format, Object... params) {
-		System.err.printf(format, params);
-		System.err.println();
+		err.printf(format, params);
+		err.println();
 	}
 }
