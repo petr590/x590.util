@@ -1,1 +1,4 @@
-Удалены устаревшие классы (зачем нам этот велосипед?)
+Переделаны LazyLoading классы
+Добавлены методы Util.getIfNonNull
+Добавлен ObjectHolder.voidHolder()
+Исправлен баг в методах Logger.log, Logger.debug и Logger.warning с пустым varargs массивом

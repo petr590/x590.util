@@ -6,12 +6,19 @@ package x590.util;
  */
 public class ObjectHolder<T> {
 	
+	private static final ObjectHolder<?> VOID_HOLDER = new ObjectHolder<>();
+	
 	private T value;
 	
 	public ObjectHolder() {}
 	
 	public ObjectHolder(T value) {
 		this.value = value;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T> ObjectHolder<T> voidHolder() {
+		return (ObjectHolder<T>)VOID_HOLDER;
 	}
 	
 	public T get() {

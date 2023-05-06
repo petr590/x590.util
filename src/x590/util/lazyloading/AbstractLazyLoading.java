@@ -13,7 +13,7 @@ import x590.util.annotation.Nullable;
  * 
  * Тип {@code S} должен быть функциональным интерфейсом
  */
-class AbstractLazyLoadingValue<S> {
+class AbstractLazyLoading<S> implements LazyLoading {
 	
 	/**
 	 * Если {@code supplier} равен {@literal null},
@@ -22,7 +22,12 @@ class AbstractLazyLoadingValue<S> {
 	@Nullable
 	protected S function;
 	
-	protected AbstractLazyLoadingValue(@Nonnull S function) {
+	protected AbstractLazyLoading(@Nonnull S function) {
 		this.function = Objects.requireNonNull(function);
+	}
+	
+	@Override
+	public boolean isLoaded() {
+		return function == null;
 	}
 }

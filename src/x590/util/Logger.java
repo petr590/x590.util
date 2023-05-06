@@ -97,13 +97,17 @@ public class Logger {
 	}
 	
 	private static void print(PrintStream out, Object... args) {
-		for(int i = 0, length = args.length;;) {
-			out.print(args[i]);
-			
-			if(++i >= length)
-				break;
-			
-			out.print(", ");
+		int length = args.length;
+		
+		if(length != 0) {
+			for(int i = 0;;) {
+				out.print(args[i]);
+				
+				if(++i >= length)
+					break;
+				
+				out.print(", ");
+			}
 		}
 		
 		out.println();

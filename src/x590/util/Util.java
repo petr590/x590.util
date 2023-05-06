@@ -5,6 +5,9 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.function.Consumer;
+import java.util.function.Function;
+
+import x590.util.annotation.Nullable;
 
 public class Util {
 	
@@ -53,5 +56,17 @@ public class Util {
 	public static <E> E addAndGetBack(Collection<? super E> collection, E element) {
 		collection.add(element);
 		return element;
+	}
+	
+	/** Применяет функцию {@code getter} для объекта {@code object}, если он не {@literal null},
+	 * иначе возвращает {@literal null}. */
+	public static <T, U> @Nullable U getIfNonNull(@Nullable T object, Function<? super T, ? extends U> getter) {
+		return object != null ? getter.apply(object) : null;
+	}
+	
+	/** Применяет функцию {@code getter} для объекта {@code object}, если он не {@literal null},
+	 * иначе возвращает {@code defaultValue}. */
+	public static <T, U> U getIfNonNull(@Nullable T object, Function<? super T, ? extends U> getter, U defaultValue) {
+		return object != null ? getter.apply(object) : defaultValue;
 	}
 }

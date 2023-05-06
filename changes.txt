@@ -1,1 +1,4 @@
-Deprecated classes have been removed (why do we need this bicycle?)
+Redesigned LazyLoading classes
+Added Util.getIfNonNull methods
+Added ObjectHolder.voidHolder()
+Fixed a bug in the Logger.log, Logger.debug and Logger.warning methods with an empty varargs array

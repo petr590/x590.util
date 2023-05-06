@@ -1,9 +1,7 @@
 package x590.util;
 
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.function.BiConsumer;
-import java.util.function.BiPredicate;
 import java.util.function.Consumer;
 import java.util.function.ObjIntConsumer;
 
@@ -263,27 +261,5 @@ public final class LoopUtil {
 				value1 = value2;
 			}
 		}
-	}
-	
-	
-	public static <T> boolean iteratorsEquals(Iterator<? extends T> iter1, Iterator<? extends T> iter2, BiPredicate<? super T, ? super T> predicate) {
-		while(iter1.hasNext() && iter2.hasNext()) {
-			var v1 = iter1.next();
-			var v2 = iter2.next();
-			
-			if(!predicate.test(v1, v2)) {
-				return false;
-			}
-		}
-		
-		return iter1.hasNext() == iter2.hasNext();
-	}
-	
-	public static <T> boolean collectionsEquals(Collection<? extends T> collection1, Collection<? extends T> collection2, BiPredicate<? super T, ? super T> predicate) {
-		if(collection1.size() != collection2.size()) {
-			return false;
-		}
-		
-		return iteratorsEquals(collection1.iterator(), collection2.iterator(), predicate);
 	}
 }
