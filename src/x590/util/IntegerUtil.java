@@ -10,7 +10,7 @@ public final class IntegerUtil {
 			ZERO = 0,
 			ONE = 1;
 	
-	private static char hexChar(int num) {
+	static char hexChar(int num) {
 		num &= 0xF;
 		return (char)((num > 9 ? 'A' - 10 : '0') + num);
 	}
@@ -82,5 +82,44 @@ public final class IntegerUtil {
 	
 	public static boolean isPowerOfTwo(int num) {
 		return (num & (num - 1)) == 0;
+	}
+
+
+	/** @return Длину строки, представляющей число, без преобразования к строке */
+	public static int getDecimalLength(int number) {
+		int length;
+
+		if(number < 0) {
+			length = 2;
+			number = -number;
+		} else {
+			length = 1;
+		}
+
+		if (number >= 100_000_000) {
+			length += 8;
+			number /= 100_000_000;
+		}
+
+		if (number >= 10_000) {
+			length += 4;
+			number /= 10_000;
+		}
+
+		if (number >= 100) {
+			length += 2;
+			number /= 100;
+		}
+
+		if (number >= 10) {
+			length += 1;
+		}
+
+		return length;
+	}
+
+	public static int parseInt(String str, int radix, boolean sign) {
+		int num = Integer.parseInt(str, radix);
+		return sign ? -num : num;
 	}
 }

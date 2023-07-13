@@ -11,8 +11,7 @@ public final class LongUtil {
 			ONE = 1L;
 	
 	private static char hexChar(long num) {
-		num &= 0xF;
-		return (char)((num > 9 ? 'A' - 10 : '0') + num);
+		return IntegerUtil.hexChar((int)num);
 	}
 	
 	
@@ -95,5 +94,10 @@ public final class LongUtil {
 	
 	public static boolean isPowerOfTwo(long num) {
 		return (num & (num - 1)) == 0;
+	}
+
+	public static long parseLong(String str, int radix, boolean sign) {
+		long num = Long.parseLong(str, radix);
+		return sign ? -num : num;
 	}
 }

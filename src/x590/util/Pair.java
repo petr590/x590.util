@@ -4,8 +4,17 @@ import java.util.Objects;
 
 public record Pair<F, S> (F first, S second) {
 	
+	private static final Pair<?, ?> EMPTY = new Pair<>(null, null);
+	
+	@SuppressWarnings("unchecked")
+	public static <F, S> Pair<F, S> empty() {
+		return (Pair<F, S>)EMPTY;
+	}
+	
 	public static <F, S> Pair<F, S> of(F first, S second) {
-		return new Pair<>(first, second);
+		return first == null && second == null ?
+				empty() :
+				new Pair<>(first, second);
 	}
 	
 	@Override

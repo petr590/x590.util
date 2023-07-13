@@ -52,4 +52,9 @@ public final class MathUtil {
 	public static boolean isPowerOfTwo(long num) {
 		return (num & (num - 1)) == 0;
 	}
+
+
+	public static float pow(float a, float b) {
+		return (float)Math.pow(a, b);
+	}
 }

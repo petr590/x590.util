@@ -1,4 +1,5 @@
-Переделаны LazyLoading классы
-Добавлены методы Util.getIfNonNull
-Добавлен ObjectHolder.voidHolder()
-Исправлен баг в методах Logger.log, Logger.debug и Logger.warning с пустым varargs массивом
+Классы Holder перенесены в подпакет x590.util.holder.
+
+Добавлены методы FloatUtil.parseFloat и DoubleUtil.parseDouble, которые парсят число в любой системе счисления.
+
+Добавлены классы UncheckedDataInputStream, UncheckedDataOutputStream, UncheckedFilterInputStream и UncheckedPositionedInputStream.

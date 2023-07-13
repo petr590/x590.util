@@ -2,16 +2,26 @@ package x590.util.io;
 
 import java.io.*;
 
+import static x590.util.io.UncheckedInputStream.newUncheckedException;
+
 /**
  * Все методы этого класса выбрасывают {@link UncheckedIOException} вместо {@link IOException}
- * В остальном работает точно так же, как {@link InputStream}
+ * В остальном работает точно так же, как {@link FilterInputStream}
  */
-public abstract class UncheckedInputStream extends InputStream {
+public class UncheckedFilterInputStream extends FilterInputStream {
 
-	public static final int EOF_CHAR = -1;
+	protected UncheckedFilterInputStream(InputStream in) {
+		super(in);
+	}
 
 	@Override
-	public abstract int read();
+	public int read() {
+		try {
+			return super.read();
+		} catch (IOException ex) {
+			throw newUncheckedException(ex);
+		}
+	}
 
 	@Override
 	public int read(byte[] buffer) {
@@ -97,17 +107,5 @@ public abstract class UncheckedInputStream extends InputStream {
 		} catch(IOException ex) {
 			throw newUncheckedException(ex);
 		}
-	}
-	
-	public static UncheckedIOException newUncheckedException(IOException ex) {
-		return new UncheckedIOException(ex);
-	}
-	
-	public static UncheckedIOException newUncheckedException(String message) {
-		return new UncheckedIOException(new IOException(message));
-	}
-
-	public static UncheckedIOException newUncheckedEOFException() {
-		return new UncheckedIOException(new EOFException());
 	}
 }

@@ -25,29 +25,41 @@ public class Util {
 		return value;
 	}
 	
+	/** @return {@code new ArrayList<T>()} после применения функции maker
+	 * @see #make(Object, Consumer) */
 	public static <T> ArrayList<T> makeArrayList(Consumer<? super ArrayList<T>> maker) {
 		return make(new ArrayList<>(), maker);
 	}
 	
+	/** @return {@code new HashMap<T>()} после применения функции maker
+	 * @see #make(Object, Consumer) */
 	public static <K, V> HashMap<K, V> makeHashMap(Consumer<? super HashMap<K, V>> maker) {
 		return make(new HashMap<>(), maker);
 	}
 	
+	/** @return {@code new HashSet<T>()} после применения функции maker
+	 * @see #make(Object, Consumer) */
 	public static <T> HashSet<T> makeHashSet(Consumer<? super HashSet<T>> maker) {
 		return make(new HashSet<>(), maker);
 	}
 
 	
-	public static <T> ArrayList<T> makeArrayList(int size, Consumer<? super ArrayList<T>> maker) {
-		return make(new ArrayList<>(size), maker);
+	/** @return {@code new ArrayList<T>(initialCapacity)} после применения функции maker
+	 * @see #make(Object, Consumer) */
+	public static <T> ArrayList<T> makeArrayList(int initialCapacity, Consumer<? super ArrayList<T>> maker) {
+		return make(new ArrayList<>(initialCapacity), maker);
 	}
 	
-	public static <K, V> HashMap<K, V> makeHashMap(int size, Consumer<? super HashMap<K, V>> maker) {
-		return make(new HashMap<>(size), maker);
+	/** @return {@code new HashMap<T>(initialCapacity)} после применения функции maker
+	 * @see #make(Object, Consumer) */
+	public static <K, V> HashMap<K, V> makeHashMap(int initialCapacity, Consumer<? super HashMap<K, V>> maker) {
+		return make(new HashMap<>(initialCapacity), maker);
 	}
 	
-	public static <T> HashSet<T> makeHashSet(int size, Consumer<? super HashSet<T>> maker) {
-		return make(new HashSet<>(size), maker);
+	/** @return {@code new HashSet<T>(initialCapacity)} после применения функции maker
+	 * @see #make(Object, Consumer) */
+	public static <T> HashSet<T> makeHashSet(int initialCapacity, Consumer<? super HashSet<T>> maker) {
+		return make(new HashSet<>(initialCapacity), maker);
 	}
 	
 	

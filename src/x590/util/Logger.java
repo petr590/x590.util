@@ -1,14 +1,36 @@
 package x590.util;
 
 import java.io.PrintStream;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Logger {
+	
+	private static final String
+			DEBUG_MESSAGE = "DEBUG",
+			WARN_MESSAGE = "WARN";
+	
 	
 	private Logger() {}
 	
 	private static PrintStream
 			out = System.out,
 			err = System.err;
+	
+	
+	private static final Map<String, Map<StackTraceElement, String>> STACK_TRACES = Map.of(
+			DEBUG_MESSAGE, new HashMap<>(),
+			WARN_MESSAGE, new HashMap<>()
+		);
+	
+	
+	public static void setOutputStream(PrintStream out) {
+		Logger.out = out;
+	}
+	
+	public static void setErrorStream(PrintStream err) {
+		Logger.err = err;
+	}
 	
 	public static void setOutputAndErrorStream(PrintStream out, PrintStream err) {
 		Logger.out = out;
@@ -25,7 +47,27 @@ public class Logger {
 	
 	
 	private static void printDebug() {
-		out.print("[DEBUG]: ");
+		out.print(getMessage(DEBUG_MESSAGE));
+	}
+	
+	private static void printWarning() {
+		out.print(getMessage(WARN_MESSAGE));
+	}
+	
+	private static String getMessage(String message) {
+		StackTraceElement stackTraceElement = Thread.currentThread().getStackTrace()[4];
+		return STACK_TRACES.get(message).computeIfAbsent(stackTraceElement,
+				element -> "[" + message + " (" + element.getFileName() + ':' + element.getLineNumber() + ")]: ");
+	}
+	
+	public static void printStackTrace() {
+		StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
+		PrintStream out = Logger.out;
+		
+		for(int i = 2, length = stackTrace.length; i < length; i++) {
+			out.print('\t');
+			out.println(stackTrace[i]);
+		}
 	}
 	
 	
@@ -138,22 +180,27 @@ public class Logger {
 	
 	
 	public static void warning(Object obj1) {
+		printWarning();
 		print(err, obj1);
 	}
 	
 	public static void warning(Object obj1, Object obj2) {
+		printWarning();
 		print(err, obj1, obj2);
 	}
 	
 	public static void warning(Object... args) {
+		printWarning();
 		print(err, args);
 	}
 	
 	public static void warning(String str) {
+		printWarning();
 		err.println(str);
 	}
 	
 	public static void warningFormatted(String format, Object... params) {
+		printWarning();
 		err.printf(format, params);
 		err.println();
 	}
