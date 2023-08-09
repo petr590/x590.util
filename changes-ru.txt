@@ -1,5 +1,3 @@
-Классы Holder перенесены в подпакет x590.util.holder.
+Добавлены методы ArrayUtil.clone2dArray и Util.getRandomByThreadLocalRandom.
 
-Добавлены методы FloatUtil.parseFloat и DoubleUtil.parseDouble, которые парсят число в любой системе счисления.
-
-Добавлены классы UncheckedDataInputStream, UncheckedDataOutputStream, UncheckedFilterInputStream и UncheckedPositionedInputStream.
+Исправлены некоторые визуальные ошибки в Javadoc и в коде.

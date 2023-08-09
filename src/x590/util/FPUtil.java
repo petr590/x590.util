@@ -15,15 +15,15 @@ public final class FPUtil {
 	}
 
 	static void validateParsing(String str, int radix) {
-		if(str == null) {
+		if (str == null) {
 			throw new NumberFormatException("Cannot parse null string");
 		}
 
-		if(radix < MIN_RADIX) {
+		if (radix < MIN_RADIX) {
 			throw new NumberFormatException("radix " + radix + " less than FPUtil.MIN_RADIX");
 		}
 
-		if(radix > MAX_RADIX) {
+		if (radix > MAX_RADIX) {
 			throw new NumberFormatException("radix " + radix + " greater than FPUtil.MAX_RADIX");
 		}
 	}

@@ -10,7 +10,7 @@ import java.lang.annotation.RetentionPolicy;
 /**
  * Аннотация-маркер, как и {@link Nullable}.
  * Означает, что поле, возвращаемое значение или параметр
- * метода не должен быть равен {@literal null}.
+ * метода не должен быть равен {@code null}.
  */
 @Target({ElementType.PARAMETER, ElementType.TYPE_USE})
 @Retention(RetentionPolicy.SOURCE)

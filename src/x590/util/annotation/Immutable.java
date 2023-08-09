@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
 
 /**
  * Аннотация-маркер.
- * Означает, что класс, или объект неизменяемый.
+ * Означает, что класс или объект неизменяемый.
  */
 @Target({ElementType.TYPE, ElementType.FIELD, ElementType.TYPE_USE})
 @Retention(RetentionPolicy.CLASS)

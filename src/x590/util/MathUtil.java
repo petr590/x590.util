@@ -6,14 +6,15 @@ public final class MathUtil {
 	
 	
 	public static double greatestCommonDivisor(double x, double y) {
-		if(x <= 0 || y <= 0)
+		if (x <= 0 || y <= 0)
 			throw new IllegalArgumentException("x = " + x + ", y = " + y);
 		
-		while(x != 0 && y != 0){
-			if(x > y)
+		while (x != 0 && y != 0) {
+			if (x > y) {
 				x %= y;
-			else
+			} else {
 				y %= x;
+			}
 		}
 
 		return x + y;
@@ -21,14 +22,16 @@ public final class MathUtil {
 	
 	
 	public static int greatestCommonDivisor(int x, int y) {
-		if(x <= 0 || y <= 0)
+		if (x <= 0 || y <= 0) {
 			throw new IllegalArgumentException("x = " + x + ", y = " + y);
+		}
 		
-		while(x != 0 && y != 0){
-			if(x > y)
+		while (x != 0 && y != 0) {
+			if (x > y) {
 				x %= y;
-			else
+			} else {
 				y %= x;
+			}
 		}
 
 		return x + y;

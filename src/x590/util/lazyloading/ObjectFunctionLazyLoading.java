@@ -21,7 +21,7 @@ public class ObjectFunctionLazyLoading<T, R> extends AbstractObjectLazyLoading<R
 	public R get(T t) {
 		var function = this.function;
 		
-		if(function == null)
+		if (function == null)
 			return value;
 		
 		this.function = null;

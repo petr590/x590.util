@@ -1,5 +1,3 @@
-The Holder classes have been moved to the x590.util.holder subpackage.
+Added ArrayUtil.clone2dArray and Util.getRandomByThreadLocalRandom methods.
 
-Added the FloatUtil.parseFloat and DoubleUtil.parseDouble methods, which parse a number in any number system.
-
-Added the UncheckedDataInputStream, UncheckedDataOutputStream, UncheckedFilterInputStream and UncheckedPositionedInputStream classes.
+Fixed some visual errors in Javadoc and in the code.

@@ -18,7 +18,7 @@ public class IntFunctionLazyLoading<T> extends AbstractIntLazyLoading<ObjToIntFu
 	public int get(T t) {
 		var function = this.function;
 		
-		if(function == null)
+		if (function == null)
 			return value;
 		
 		this.function = null;

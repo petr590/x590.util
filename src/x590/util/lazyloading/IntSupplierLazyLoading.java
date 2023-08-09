@@ -14,7 +14,7 @@ public class IntSupplierLazyLoading extends AbstractIntLazyLoading<IntSupplier> 
 	public int getAsInt() {
 		var function = this.function;
 		
-		if(function == null)
+		if (function == null)
 			return value;
 		
 		this.function = null;

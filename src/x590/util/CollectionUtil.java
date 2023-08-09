@@ -17,12 +17,12 @@ public final class CollectionUtil {
 	
 	/**
 	 * Проверяет, что две коллекции содержат одинаковые элементы
-	 * @param iter1 - первая коллекция
-	 * @param iter2 - вторая коллекция
-	 * @param predicate - предикат для сравнения элементов
+	 * @param collection1 первая коллекция
+	 * @param collection2 вторая коллекция
+	 * @param predicate предикат для сравнения элементов
 	 */
 	public static <T> boolean collectionsEquals(Collection<? extends T> collection1, Collection<? extends T> collection2, ObjObjIntPredicate<? super T, ? super T> predicate) {
-		if(collection1.size() != collection2.size()) {
+		if (collection1.size() != collection2.size()) {
 			return false;
 		}
 		

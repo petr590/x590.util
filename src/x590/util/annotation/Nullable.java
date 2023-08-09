@@ -9,7 +9,7 @@ import java.lang.annotation.RetentionPolicy;
 
 /**
  * Аннотация-маркер.
- * Означает, что поле, возвращаемое значение или параметр метода может быть равен {@literal null}.
+ * Означает, что поле, возвращаемое значение или параметр метода может быть равен {@code null}.
  */
 @Target({ElementType.PARAMETER, ElementType.TYPE_USE})
 @Retention(RetentionPolicy.SOURCE)

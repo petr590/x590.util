@@ -15,7 +15,7 @@ public class LazyLoadingMap<K, V> implements Map<K, V> {
 	private Map<K, V> map;
 	
 	/**
-	 * @param supplier - объект, который вызывается только при первом обращении к карте
+	 * @param supplier объект, который вызывается только при первом обращении к карте
 	 */
 	public LazyLoadingMap(Supplier<Map<K, V>> supplier) {
 		this.supplier = supplier;
@@ -24,7 +24,7 @@ public class LazyLoadingMap<K, V> implements Map<K, V> {
 	private Map<K, V> getMap() {
 		var map = this.map;
 		
-		if(map != null) {
+		if (map != null) {
 			return map;
 		}
 		

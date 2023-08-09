@@ -14,7 +14,7 @@ public class ObjectSupplierLazyLoading<T> extends AbstractObjectLazyLoading<T, S
 	public T get() {
 		var function = this.function;
 		
-		if(function == null)
+		if (function == null)
 			return value;
 		
 		this.function = null;

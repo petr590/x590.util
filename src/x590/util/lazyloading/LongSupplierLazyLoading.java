@@ -14,7 +14,7 @@ public class LongSupplierLazyLoading extends AbstractLongLazyLoading<LongSupplie
 	public long getAsLong() {
 		var function = this.function;
 		
-		if(function == null)
+		if (function == null)
 			return value;
 		
 		this.function = null;

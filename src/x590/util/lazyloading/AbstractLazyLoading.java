@@ -16,7 +16,7 @@ import x590.util.annotation.Nullable;
 class AbstractLazyLoading<S> implements LazyLoading {
 	
 	/**
-	 * Если {@code supplier} равен {@literal null},
+	 * Если {@code supplier} равен {@code null},
 	 * значит, поле {code value} инициализировано
 	 */
 	@Nullable

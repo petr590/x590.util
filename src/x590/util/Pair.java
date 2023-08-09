@@ -1,7 +1,10 @@
 package x590.util;
 
+import x590.util.annotation.Immutable;
+
 import java.util.Objects;
 
+@Immutable
 public record Pair<F, S> (F first, S second) {
 	
 	private static final Pair<?, ?> EMPTY = new Pair<>(null, null);

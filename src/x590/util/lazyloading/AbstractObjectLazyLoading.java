@@ -11,7 +11,7 @@ class AbstractObjectLazyLoading<T, S> extends AbstractLazyLoading<S> {
 	}
 	
 	public T getRequired() {
-		if(function == null)
+		if (function == null)
 			return value;
 		
 		throw new IllegalStateException("Value is not initialized");

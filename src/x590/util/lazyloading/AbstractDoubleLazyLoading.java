@@ -11,7 +11,7 @@ class AbstractDoubleLazyLoading<S> extends AbstractLazyLoading<S> {
 	}
 	
 	public double getRequired() {
-		if(function == null)
+		if (function == null)
 			return value;
 		
 		throw new IllegalStateException("Value is not initialized");

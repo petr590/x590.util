@@ -18,7 +18,7 @@ public class LongFunctionLazyLoading<T> extends AbstractLongLazyLoading<ObjToLon
 	public long get(T t) {
 		var function = this.function;
 		
-		if(function == null)
+		if (function == null)
 			return value;
 		
 		this.function = null;

@@ -24,7 +24,7 @@ public final class LongUtil {
 		do {
 			data[--i] = hexChar(num);
 			num >>>= 4;
-		} while(num != 0);
+		} while (num != 0);
 		
 		return String.valueOf(data, i, 16 - i);
 	}

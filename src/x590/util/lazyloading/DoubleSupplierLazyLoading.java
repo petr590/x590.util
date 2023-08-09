@@ -14,7 +14,7 @@ public class DoubleSupplierLazyLoading extends AbstractDoubleLazyLoading<DoubleS
 	public double getAsDouble() {
 		var function = this.function;
 		
-		if(function == null)
+		if (function == null)
 			return value;
 		
 		this.function = null;

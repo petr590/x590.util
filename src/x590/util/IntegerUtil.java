@@ -5,7 +5,7 @@ public final class IntegerUtil {
 	private IntegerUtil() {}
 	
 	
-	/** Просто чтобы не вызывать кажный раз метод {@link Integer#valueOf(int)} */
+	/** Просто чтобы не вызывать каждый раз метод {@link Integer#valueOf(int)} */
 	public static final Integer
 			ZERO = 0,
 			ONE = 1;
@@ -25,7 +25,7 @@ public final class IntegerUtil {
 		do {
 			data[--i] = hexChar(num);
 			num >>>= 4;
-		} while(num != 0);
+		} while (num != 0);
 		
 		return String.valueOf(data, i, 8 - i);
 	}
@@ -89,7 +89,7 @@ public final class IntegerUtil {
 	public static int getDecimalLength(int number) {
 		int length;
 
-		if(number < 0) {
+		if (number < 0) {
 			length = 2;
 			number = -number;
 		} else {

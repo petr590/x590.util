@@ -12,14 +12,14 @@ public final class DoubleUtil {
 
 		int length = str.length();
 
-		if(length == 0) {
+		if (length == 0) {
 			throw numberFormatException(str, radix);
 		}
 
 		char firstChar = str.charAt(0);
 		int i = firstChar == '-' || firstChar == '+' ? 1 : 0;
 
-		if(length <= i) {
+		if (length <= i) {
 			throw numberFormatException(str, radix);
 		}
 
@@ -29,17 +29,17 @@ public final class DoubleUtil {
 
 		char exponentSeparator = getExponentSeparator(radix);
 
-		for(boolean hasPoint = false; i < length; i++) {
+		for (boolean hasPoint = false; i < length; i++) {
 			char ch = str.charAt(i);
 
-			if(ch == '.') {
-				if(hasPoint) {
+			if (ch == '.') {
+				if (hasPoint) {
 					throw numberFormatException(str, radix);
 				}
 
 				hasPoint = true;
 
-			} else if(Character.toLowerCase(ch) == exponentSeparator) {
+			} else if (Character.toLowerCase(ch) == exponentSeparator) {
 				try {
 					return result * Math.pow(radix, Integer.parseInt(str.substring(i + 1))) * sign;
 				} catch(NumberFormatException ex) {
@@ -49,11 +49,11 @@ public final class DoubleUtil {
 			} else {
 				int digit = Character.digit(ch, radix);
 
-				if(digit == -1) {
+				if (digit == -1) {
 					throw numberFormatException(str, radix);
 				}
 
-				if(hasPoint) {
+				if (hasPoint) {
 					exponent /= radix;
 					result += exponent * digit;
 				} else {

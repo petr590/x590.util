@@ -64,7 +64,7 @@ public class Logger {
 		StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
 		PrintStream out = Logger.out;
 		
-		for(int i = 2, length = stackTrace.length; i < length; i++) {
+		for (int i = 2, length = stackTrace.length; i < length; i++) {
 			out.print('\t');
 			out.println(stackTrace[i]);
 		}
@@ -141,11 +141,11 @@ public class Logger {
 	private static void print(PrintStream out, Object... args) {
 		int length = args.length;
 		
-		if(length != 0) {
-			for(int i = 0;;) {
+		if (length != 0) {
+			for (int i = 0;;) {
 				out.print(args[i]);
 				
-				if(++i >= length)
+				if (++i >= length)
 					break;
 				
 				out.print(", ");

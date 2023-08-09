@@ -16,7 +16,7 @@ public final class LoopUtil {
 	
 	public static <T> void forEach(Iterable<T> iterable, ObjIntConsumer<? super T> eachFunc) {
 		int i = 0;
-		for(Iterator<T> iterator = iterable.iterator(); iterator.hasNext(); i++)
+		for (Iterator<T> iterator = iterable.iterator(); iterator.hasNext(); i++)
 			eachFunc.accept(iterator.next(), i);
 	}
 	
@@ -42,25 +42,29 @@ public final class LoopUtil {
 	/**
 	 * Выполняет функцию для всех элементов, кроме последнего.
 	 * 
-	 * @param iterator - итератор, из которого будут браться элементы.
+	 * @param iterator итератор, из которого будут браться элементы.
 	 * Если элементов в итераторе будет меньше, чем startIndex, ничего не произойдёт (ошибки не будет).
-	 * @param eachFunc - функция, которая будет выполнена для каждого элемента. Принимает элемент и индекс.
-	 * @param eachExcludingLastFunc - функция, которая будет выполнена для каждого элемента, кроме последнего.
-	 * @param startIndex - сколько элементов пропустить с начала итератора.
+	 * @param eachFunc функция, которая будет выполнена для каждого элемента. Принимает элемент и индекс.
+	 * @param eachExcludingLastFunc функция, которая будет выполнена для каждого элемента, кроме последнего.
+	 * @param startIndex сколько элементов пропустить с начала итератора.
 	 */
 	public static <T> void forEachExcludingLast(Iterator<T> iterator, Consumer<? super T> eachFunc, Consumer<? super T> eachExcludingLastFunc, int startIndex) {
-		
-		for(; startIndex > 0 && iterator.hasNext(); iterator.next(), startIndex--);
-		
-		if(iterator.hasNext()) {
-			while(true) {
+
+		while (startIndex > 0 && iterator.hasNext()) {
+			iterator.next();
+			startIndex--;
+		}
+
+		if (iterator.hasNext()) {
+			while (true) {
 				T value = iterator.next();
 				eachFunc.accept(value);
 				
-				if(iterator.hasNext())
+				if (iterator.hasNext()) {
 					eachExcludingLastFunc.accept(value);
-				else
+				} else {
 					break;
+				}
 			}
 		}
 	}
@@ -101,30 +105,34 @@ public final class LoopUtil {
 	 * 
 	 * @param <T> - тип элементов итератора.
 	 * 
-	 * @param iterator - итератор, из которого будут браться элементы.
+	 * @param iterator итератор, из которого будут браться элементы.
 	 * Если элементов в итераторе будет меньше, чем startIndex, ничего не произойдёт (ошибки не будет).
 	 * 
-	 * @param eachFunc - функция, которая будет выполнена для каждого элемента. Принимает элемент и индекс.
-	 * @param eachExcludingLastFunc - функция, которая будет выполнена для каждого элемента, кроме последнего.
+	 * @param eachFunc функция, которая будет выполнена для каждого элемента. Принимает элемент и индекс.
+	 * @param eachExcludingLastFunc функция, которая будет выполнена для каждого элемента, кроме последнего.
 	 * 
-	 * @param startIndex - сколько элементов пропустить с начала итератора.
-	 * @param startCountIndex - индекс, с которого будет вестись отсчёт.
+	 * @param startIndex сколько элементов пропустить с начала итератора.
+	 * @param startCountIndex индекс, с которого будет вестись отсчёт.
 	 */
 	public static <T> void forEachExcludingLast(Iterator<T> iterator, ObjIntConsumer<? super T> eachFunc, Consumer<? super T> eachExcludingLastFunc, int startIndex, int startCountIndex) {
-		
-		for(; startIndex > 0 && iterator.hasNext(); iterator.next(), --startIndex);
-		
-		if(iterator.hasNext()) {
+
+		while (startIndex > 0 && iterator.hasNext()) {
+			iterator.next();
+			--startIndex;
+		}
+
+		if (iterator.hasNext()) {
 			int i = startCountIndex;
 			
-			while(true) {
+			while (true) {
 				T value = iterator.next();
 				eachFunc.accept(value, i);
 				
-				if(iterator.hasNext())
+				if (iterator.hasNext()) {
 					eachExcludingLastFunc.accept(value);
-				else
+				} else {
 					break;
+				}
 				
 				i++;
 			}
@@ -153,19 +161,22 @@ public final class LoopUtil {
 	/**
 	 * Выполняет функцию для каждой пары элементов, идущих подряд.
 	 * 
-	 * @param iterator - итератор, из которого будут браться элементы.
+	 * @param iterator итератор, из которого будут браться элементы.
 	 * Если элементов в итераторе будет меньше, чем startIndex, ничего не произойдёт (ошибки не будет).
-	 * @param eachPairFunc - функция, которая будет выполнена для каждой пары элементов, идущих подряд.
-	 * @param startIndex - сколько элементов пропустить с начала итератора.
+	 * @param eachPairFunc функция, которая будет выполнена для каждой пары элементов, идущих подряд.
+	 * @param startIndex сколько элементов пропустить с начала итератора.
 	 */
 	public static <T> void forEachPair(Iterator<T> iterator, BiConsumer<? super T, ? super T> eachPairFunc, int startIndex) {
 		
-		for(; startIndex > 0 && iterator.hasNext(); iterator.next(), startIndex--);
+		while (startIndex > 0 && iterator.hasNext()) {
+			iterator.next();
+			startIndex--;
+		}
 		
-		if(iterator.hasNext()) {
+		if (iterator.hasNext()) {
 			T value1 = iterator.next();
 			
-			while(iterator.hasNext()) {
+			while (iterator.hasNext()) {
 				T value2 = iterator.next();
 				eachPairFunc.accept(value1, value2);
 				value1 = value2;
@@ -195,21 +206,24 @@ public final class LoopUtil {
 	/**
 	 * Выполняет функцию для каждой пары элементов, идущих подряд.
 	 * 
-	 * @param iterator - итератор, из которого будут браться элементы.
+	 * @param iterator итератор, из которого будут браться элементы.
 	 * Если элементов в итераторе будет меньше, чем startIndex, ничего не произойдёт (ошибки не будет).
-	 * @param eachFunc - функция, которая будет выполнена для каждого элемента поочерёдно с eachPairFunc
-	 * @param eachPairFunc - функция, которая будет выполнена для каждой пары элементов, идущих подряд.
-	 * @param startIndex - сколько элементов пропустить с начала итератора.
+	 * @param eachFunc функция, которая будет выполнена для каждого элемента поочерёдно с eachPairFunc
+	 * @param eachPairFunc функция, которая будет выполнена для каждой пары элементов, идущих подряд.
+	 * @param startIndex сколько элементов пропустить с начала итератора.
 	 */
 	public static <T> void forEachPair(Iterator<T> iterator, Consumer<? super T> eachFunc, BiConsumer<? super T, ? super T> eachPairFunc, int startIndex) {
 		
-		for(; startIndex > 0 && iterator.hasNext(); iterator.next(), startIndex--);
+		while (startIndex > 0 && iterator.hasNext()) {
+			iterator.next();
+			startIndex--;
+		}
 		
-		if(iterator.hasNext()) {
+		if (iterator.hasNext()) {
 			T value1 = iterator.next();
 			eachFunc.accept(value1);
 			
-			while(iterator.hasNext()) {
+			while (iterator.hasNext()) {
 				T value2 = iterator.next();
 				eachPairFunc.accept(value1, value2);
 				eachFunc.accept(value2);
@@ -240,21 +254,24 @@ public final class LoopUtil {
 	/**
 	 * Выполняет функцию для каждой пары элементов, идущих подряд.
 	 * 
-	 * @param iterator - итератор, из которого будут браться элементы.
+	 * @param iterator итератор, из которого будут браться элементы.
 	 * Если элементов в итераторе будет меньше, чем startIndex, ничего не произойдёт (ошибки не будет).
-	 * @param eachFunc - функция, которая будет выполнена для каждого элемента поочерёдно с eachPairFunc
-	 * @param eachPairFunc - функция, которая будет выполнена для каждой пары элементов, идущих подряд.
-	 * @param startIndex - сколько элементов пропустить с начала итератора.
+	 * @param eachFunc функция, которая будет выполнена для каждого элемента поочерёдно с eachPairFunc
+	 * @param eachPairFunc функция, которая будет выполнена для каждой пары элементов, идущих подряд.
+	 * @param startIndex сколько элементов пропустить с начала итератора.
 	 */
 	public static <T> void forEachPair(Iterator<T> iterator, ObjIntConsumer<? super T> eachFunc, BiConsumer<? super T, ? super T> eachPairFunc, int startIndex) {
 		
-		for(; startIndex > 0 && iterator.hasNext(); iterator.next(), startIndex--);
+		while (startIndex > 0 && iterator.hasNext()) {
+			iterator.next();
+			startIndex--;
+		}
 		
-		if(iterator.hasNext()) {
+		if (iterator.hasNext()) {
 			T value1 = iterator.next();
 			eachFunc.accept(value1, 0);
 
-			for(int i = 1; iterator.hasNext(); i++) {
+			for (int i = 1; iterator.hasNext(); i++) {
 				T value2 = iterator.next();
 				eachPairFunc.accept(value1, value2);
 				eachFunc.accept(value2, i);

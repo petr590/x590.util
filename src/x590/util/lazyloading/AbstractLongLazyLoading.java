@@ -11,7 +11,7 @@ class AbstractLongLazyLoading<S> extends AbstractLazyLoading<S> {
 	}
 	
 	public long getRequired() {
-		if(function == null)
+		if (function == null)
 			return value;
 		
 		throw new IllegalStateException("Value is not initialized");

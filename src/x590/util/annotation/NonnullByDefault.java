@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
 
 /**
  * Аннотация-маркер. Означает, что все поля, возвращаемые значения в классе или пакете
- * и параметры метода не {@literal null} по умолчанию.
+ * и параметры метода не {@code null} по умолчанию.
  */
 @Target({ElementType.TYPE, ElementType.PACKAGE})
 @Retention(RetentionPolicy.CLASS)

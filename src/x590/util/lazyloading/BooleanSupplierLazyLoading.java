@@ -16,7 +16,7 @@ public class BooleanSupplierLazyLoading extends AbstractBooleanLazyLoading<Boole
 	public boolean getAsBoolean() {
 		var function = this.function;
 		
-		if(function == null)
+		if (function == null)
 			return value;
 		
 		this.function = null;

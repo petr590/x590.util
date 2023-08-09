@@ -1,15 +1,13 @@
 package x590.util;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
 import x590.util.annotation.Nullable;
 
-public class Util {
+public final class Util {
 	
 	private Util() {}
 	
@@ -17,8 +15,8 @@ public class Util {
 	/**
 	 * Вызывает переданную функцию для переданного аргумента.
 	 * Удобно при инициализации коллекций и мап.
-	 * @param value - агрумент, для которого вызывается функция maker
-	 * @param maker - вызывается для value
+	 * @param value аргумент, для которого вызывается функция maker
+	 * @param maker вызывается для value
 	 */
 	public static <T> T make(T value, Consumer<? super T> maker) {
 		maker.accept(value);
@@ -70,15 +68,21 @@ public class Util {
 		return element;
 	}
 	
-	/** Применяет функцию {@code getter} для объекта {@code object}, если он не {@literal null},
-	 * иначе возвращает {@literal null}. */
+	/** Применяет функцию {@code getter} для объекта {@code object}, если он не {@code null},
+	 * иначе возвращает {@code null}. */
 	public static <T, U> @Nullable U getIfNonNull(@Nullable T object, Function<? super T, ? extends U> getter) {
 		return object != null ? getter.apply(object) : null;
 	}
 	
-	/** Применяет функцию {@code getter} для объекта {@code object}, если он не {@literal null},
+	/** Применяет функцию {@code getter} для объекта {@code object}, если он не {@code null},
 	 * иначе возвращает {@code defaultValue}. */
 	public static <T, U> U getIfNonNull(@Nullable T object, Function<? super T, ? extends U> getter, U defaultValue) {
 		return object != null ? getter.apply(object) : defaultValue;
+	}
+
+
+	/** @return Случайный элемент из списка, выбранный с помощью {@link ThreadLocalRandom#nextInt(int, int)} */
+	public static <T> T getRandomByThreadLocalRandom(List<? extends T> values) {
+		return values.get(ThreadLocalRandom.current().nextInt(0, values.size()));
 	}
 }
