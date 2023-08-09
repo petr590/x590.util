@@ -1,10 +1,12 @@
 package x590.util.holder;
 
+import java.util.function.Supplier;
+
 /**
  * Содержит значение типа T. Используется, например, когда нужно
  * изменять значение локальной переменной из лямбды
  */
-public class ObjectHolder<T> {
+public class ObjectHolder<T> implements Supplier<T> {
 	
 	private static final ObjectHolder<?> VOID_HOLDER = new ObjectHolder<>();
 	
@@ -20,7 +22,8 @@ public class ObjectHolder<T> {
 	public static <T> ObjectHolder<T> voidHolder() {
 		return (ObjectHolder<T>)VOID_HOLDER;
 	}
-	
+
+	@Override
 	public T get() {
 		return value;
 	}

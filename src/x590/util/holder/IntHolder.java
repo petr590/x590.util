@@ -1,10 +1,12 @@
 package x590.util.holder;
 
+import java.util.function.IntSupplier;
+
 /**
  * Содержит значение типа int. Используется, например, когда нужно
  * изменять значение локальной переменной из лямбды
  */
-public class IntHolder {
+public class IntHolder implements IntSupplier {
 	
 	private int value;
 	
@@ -15,6 +17,11 @@ public class IntHolder {
 	}
 	
 	public int get() {
+		return value;
+	}
+
+	@Override
+	public int getAsInt() {
 		return value;
 	}
 	

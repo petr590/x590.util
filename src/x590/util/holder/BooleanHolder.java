@@ -1,10 +1,12 @@
 package x590.util.holder;
 
+import java.util.function.BooleanSupplier;
+
 /**
  * Содержит значение типа boolean. Используется, например, когда нужно
  * изменять значение локальной переменной из лямбды
  */
-public class BooleanHolder {
+public class BooleanHolder implements BooleanSupplier {
 	
 	private boolean value;
 	
@@ -15,6 +17,11 @@ public class BooleanHolder {
 	}
 	
 	public boolean get() {
+		return value;
+	}
+
+	@Override
+	public boolean getAsBoolean() {
 		return value;
 	}
 	

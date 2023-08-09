@@ -1,10 +1,12 @@
 package x590.util.holder;
 
+import java.util.function.DoubleSupplier;
+
 /**
  * Содержит значение типа double. Используется, например, когда нужно
  * изменять значение локальной переменной из лямбды
  */
-public class DoubleHolder {
+public class DoubleHolder implements DoubleSupplier {
 	
 	private double value;
 	
@@ -15,6 +17,11 @@ public class DoubleHolder {
 	}
 	
 	public double get() {
+		return value;
+	}
+
+	@Override
+	public double getAsDouble() {
 		return value;
 	}
 	

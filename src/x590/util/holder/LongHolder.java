@@ -1,10 +1,12 @@
 package x590.util.holder;
 
+import java.util.function.LongSupplier;
+
 /**
  * Содержит значение типа long. Используется, например, когда нужно
  * изменять значение локальной переменной из лямбды
  */
-public class LongHolder {
+public class LongHolder implements LongSupplier {
 	
 	private long value;
 	
@@ -15,6 +17,11 @@ public class LongHolder {
 	}
 	
 	public long get() {
+		return value;
+	}
+
+	@Override
+	public long getAsLong() {
 		return value;
 	}
 	
