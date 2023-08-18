@@ -1,17 +1,17 @@
 package x590.util.lazyloading;
 
 import x590.util.annotation.Nonnull;
-import x590.util.function.ObjToBooleanFunction;
+import x590.util.function.ToBooleanFunction;
 
-public class BooleanFunctionLazyLoading<T> extends AbstractBooleanLazyLoading<ObjToBooleanFunction<T>>
-		implements ObjToBooleanFunction<T> {
+public class BooleanFunctionLazyLoading<T> extends AbstractBooleanLazyLoading<ToBooleanFunction<T>>
+		implements ToBooleanFunction<T> {
 	
-	public BooleanFunctionLazyLoading(@Nonnull ObjToBooleanFunction<T> supplier) {
+	public BooleanFunctionLazyLoading(@Nonnull ToBooleanFunction<T> supplier) {
 		super(supplier);
 	}
 	
 	@Override	
-	public boolean apply(T t) {
+	public boolean applyAsBoolean(T t) {
 		return get(t);
 	}
 	
@@ -22,7 +22,7 @@ public class BooleanFunctionLazyLoading<T> extends AbstractBooleanLazyLoading<Ob
 			return value;
 		
 		this.function = null;
-		return this.value = function.apply(t);
+		return this.value = function.applyAsBoolean(t);
 	}
 	
 	public boolean isTrue(T t) {

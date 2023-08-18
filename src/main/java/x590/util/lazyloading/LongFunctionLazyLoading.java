@@ -1,17 +1,18 @@
 package x590.util.lazyloading;
 
 import x590.util.annotation.Nonnull;
-import x590.util.function.ObjToLongFunction;
 
-public class LongFunctionLazyLoading<T> extends AbstractLongLazyLoading<ObjToLongFunction<T>>
-		implements ObjToLongFunction<T> {
+import java.util.function.ToLongFunction;
+
+public class LongFunctionLazyLoading<T> extends AbstractLongLazyLoading<ToLongFunction<T>>
+		implements ToLongFunction<T> {
 	
-	public LongFunctionLazyLoading(@Nonnull ObjToLongFunction<T> supplier) {
+	public LongFunctionLazyLoading(@Nonnull ToLongFunction<T> supplier) {
 		super(supplier);
 	}
 	
 	@Override
-	public long apply(T t) {
+	public long applyAsLong(T t) {
 		return get(t);
 	}
 	
@@ -22,6 +23,6 @@ public class LongFunctionLazyLoading<T> extends AbstractLongLazyLoading<ObjToLon
 			return value;
 		
 		this.function = null;
-		return this.value = function.apply(t);
+		return this.value = function.applyAsLong(t);
 	}
 }

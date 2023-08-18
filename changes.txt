@@ -1,3 +1,5 @@
-Added ArrayUtil.clone2dArray and Util.getRandomByThreadLocalRandom methods.
+Package x590.util.function:
+- Added classes ObjCharFunction, ToCharFunction, ToBooleanFunction, TriCharFunction.
+- Old ObjTo<Type>Function classes have been removed, since such classes already exist in java.util.function.
 
-Fixed some visual errors in Javadoc and in the code.
+Added the indexOf and lastIndexOf methods to the LoopUtil class.

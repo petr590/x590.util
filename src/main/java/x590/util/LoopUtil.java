@@ -1,9 +1,12 @@
 package x590.util;
 
+import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.ObjIntConsumer;
+import java.util.function.Predicate;
 
 public final class LoopUtil {
 	
@@ -278,5 +281,41 @@ public final class LoopUtil {
 				value1 = value2;
 			}
 		}
+	}
+
+
+	/**
+	 * @return Первый элемент, соответствующий предикату или {@code -1}, если такого элемента нет.
+	 * @implNote Работает через {@link List#iterator()}, так как некоторые списки
+	 * (такие, как {@link java.util.LinkedList}) имеют высокую сложность при доступе к элементам
+	 * через {@link List#get(int)}.
+	 */
+	public static <T> int indexOf(List<T> list, Predicate<? super T> predicate) {
+		var iterator = list.iterator();
+
+		for (int i = 0; iterator.hasNext(); i++) {
+			if (predicate.test(iterator.next())) {
+				return i;
+			}
+		}
+
+		return -1;
+	}
+
+
+	/**
+	 * @return Последний элемент, соответствующий предикату или {@code -1}, если такого элемента нет.
+	 * @implNote Работает через {@link List#listIterator(int)}, так как некоторые списки
+	 * (такие, как {@link java.util.LinkedList}) имеют высокую сложность при доступе к элементам
+	 * через {@link List#get(int)}.
+	 */
+	public static <T> int lastIndexOf(List<T> list, Predicate<? super T> predicate) {
+		for (var iterator = list.listIterator(list.size()); iterator.hasPrevious(); ) {
+			if (predicate.test(iterator.previous())) {
+				return iterator.nextIndex();
+			}
+		}
+
+		return -1;
 	}
 }

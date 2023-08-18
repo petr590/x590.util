@@ -1,17 +1,18 @@
 package x590.util.lazyloading;
 
 import x590.util.annotation.Nonnull;
-import x590.util.function.ObjToDoubleFunction;
 
-public class DoubleFunctionLazyLoading<T> extends AbstractDoubleLazyLoading<ObjToDoubleFunction<T>>
-		implements ObjToDoubleFunction<T> {
+import java.util.function.ToDoubleFunction;
+
+public class DoubleFunctionLazyLoading<T> extends AbstractDoubleLazyLoading<ToDoubleFunction<T>>
+		implements ToDoubleFunction<T> {
 	
-	public DoubleFunctionLazyLoading(@Nonnull ObjToDoubleFunction<T> supplier) {
+	public DoubleFunctionLazyLoading(@Nonnull ToDoubleFunction<T> supplier) {
 		super(supplier);
 	}
 	
 	@Override
-	public double apply(T t) {
+	public double applyAsDouble(T t) {
 		return get(t);
 	}
 	
@@ -22,6 +23,6 @@ public class DoubleFunctionLazyLoading<T> extends AbstractDoubleLazyLoading<ObjT
 			return value;
 		
 		this.function = null;
-		return this.value = function.apply(t);
+		return this.value = function.applyAsDouble(t);
 	}
 }

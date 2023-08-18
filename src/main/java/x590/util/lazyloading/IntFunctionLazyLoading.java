@@ -1,17 +1,18 @@
 package x590.util.lazyloading;
 
 import x590.util.annotation.Nonnull;
-import x590.util.function.ObjToIntFunction;
 
-public class IntFunctionLazyLoading<T> extends AbstractIntLazyLoading<ObjToIntFunction<T>>
-		implements ObjToIntFunction<T> {
+import java.util.function.ToIntFunction;
+
+public class IntFunctionLazyLoading<T> extends AbstractIntLazyLoading<ToIntFunction<T>>
+		implements ToIntFunction<T> {
 	
-	public IntFunctionLazyLoading(@Nonnull ObjToIntFunction<T> supplier) {
+	public IntFunctionLazyLoading(@Nonnull ToIntFunction<T> supplier) {
 		super(supplier);
 	}
 	
 	@Override
-	public int apply(T t) {
+	public int applyAsInt(T t) {
 		return get(t);
 	}
 	
@@ -22,6 +23,6 @@ public class IntFunctionLazyLoading<T> extends AbstractIntLazyLoading<ObjToIntFu
 			return value;
 		
 		this.function = null;
-		return this.value = function.apply(t);
+		return this.value = function.applyAsInt(t);
 	}
 }
